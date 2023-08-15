@@ -1,0 +1,19 @@
+listener "tcp" { 
+  address =  "<%= vault_listen_address %>"
+  tls_disable = true 
+}
+
+backend "file" { 
+  path = "vault/file"
+}
+
+seal "awskms" { 
+  region =  "<%= kms_region %>"
+  kms_key_id = "<%= kms_key_id %>"
+  secret_key = "<%= secret_key %>"
+  access_key = "<%= access_key %>"
+}
+
+
+api_addr = "<%= vault_api_address %>"
+ui = true 

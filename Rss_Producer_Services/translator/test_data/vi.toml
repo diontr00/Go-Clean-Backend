@@ -1,0 +1,12 @@
+[test_specs]
+one = "Đây là {{.Count}} apple"
+other = "Đây là {{.Count}} apples"
+
+[email]
+other = "vui lòng nhập dung email"
+
+
+[required] 
+description = "for simplicity hard coded field"
+other = "vui lòng nhập tên"
+

@@ -1,0 +1,53 @@
+[required]
+  other = "{{.Field}} là trường bắt buộc."
+
+[alphanum]
+  other = "{{.Field}} cần phải chứa (A-Z,a-z,0-9) và ký tự đặc biệt"
+
+[containsany]
+  other = "{{.Field}}  cần phải chứa  ký tự đặc biệt"
+
+[alpha]
+  other = "{{.Field}} chỉ có chữ số được cho phép"
+
+[email]
+  other = "{{.Field}} cần email hợp lệ"
+
+[min]
+  other = "{{.Field}} cần phải có ít nhất {{.Param}} ký tự"
+
+[notfound]
+  other = "không tìm thấy tài nguyên {{.Param}}"
+
+[invalidkey]
+  other = "giá trị api key không hợp lệ"
+
+[bodyparse]
+  other = "vui lòng kiểm tra lại format"
+
+[tryagain]
+  other = "vui lòng kiểm tra lại sau"
+
+[autherror]
+  other = "username, password giá trị không hợp lệ"
+
+[missingtoken]
+  other = "Làm ơn đăng nhập để sử dụng dịch vụ"
+
+[userexist]
+  other = "người dùng đã đăng kí tài khoản, xin vui lòng đăng nhập"
+
+[signuperror]
+  other = "không thể tạo người dùng vào thời điểm này"
+
+[alreadylogin]
+  other = "bạn đã đăng nhập rồi"
+
+[notlogin]
+  other = "bạn cần phải đăng nhập trước khi thực hiện hành động này"
+
+[notsupport]
+  other = "{{.Method}} cho không hợp lệ"
+
+[loggedin]
+  other = "đăng nhập thành công"

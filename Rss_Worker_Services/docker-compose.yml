@@ -1,0 +1,5 @@
+version: "3.9"
+services:
+  worker:
+    image: rss_worker
+    network_mode: "host"

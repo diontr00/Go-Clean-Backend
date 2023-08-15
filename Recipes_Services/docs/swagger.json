@@ -1,0 +1,553 @@
+{
+    "consumes": [
+        "application/json",
+        "application/json"
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "Support Vietnamese and English via locale Query [\"vi\" , \"en\"]",
+        "title": "Sample Cooking Recipes API",
+        "contact": {
+            "name": "khanhanhtr",
+            "url": "khanhanh.me",
+            "email": "khanhanhtr00@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/private/recipes/{:id}": {
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Update particular recipe",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The ID associate with the recipe",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Recipe to update",
+                        "name": "recipe",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.RecipeCreateRequest"
+                        }
+                    },
+                    {
+                        "enum": [
+                            "\"vi\"",
+                            "\"en\""
+                        ],
+                        "type": "string",
+                        "example": "\"vi\"",
+                        "description": "supported locale",
+                        "name": "locale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Id of the updated recipe",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Recipe id not found",
+                        "schema": {
+                            "$ref": "#/definitions/model.RecipeNotFoundError"
+                        }
+                    },
+                    "500": {
+                        "description": "Problem with internal server",
+                        "schema": {
+                            "$ref": "#/definitions/model.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/recipes": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Get all the recipe",
+                "parameters": [
+                    {
+                        "enum": [
+                            "\"vi\"",
+                            "\"en\""
+                        ],
+                        "type": "string",
+                        "example": "\"vi\"",
+                        "description": "supported locale",
+                        "name": "locale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All of the recipe returned",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.RecipeGetResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Recipe repo is currently empty",
+                        "schema": {
+                            "$ref": "#/definitions/model.RecipeNotFoundError"
+                        }
+                    },
+                    "500": {
+                        "description": "Problem with internal server",
+                        "schema": {
+                            "$ref": "#/definitions/model.InternalServerError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Create a new recipe",
+                "parameters": [
+                    {
+                        "description": "Recipe to create",
+                        "name": "recipe",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.RecipeCreateRequest"
+                        }
+                    },
+                    {
+                        "enum": [
+                            "\"vi\"",
+                            "\"en\""
+                        ],
+                        "type": "string",
+                        "description": "supported locale",
+                        "name": "locale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Id of the created recipe",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Parsing problem , either wrong type or validation constraint will be explain",
+                        "schema": {
+                            "$ref": "#/definitions/model.RecipeParsingError"
+                        }
+                    },
+                    "404": {
+                        "description": "Recipe Cannot be found",
+                        "schema": {
+                            "$ref": "#/definitions/model.RecipeNotFoundError"
+                        }
+                    },
+                    "500": {
+                        "description": "Problem with internal server",
+                        "schema": {
+                            "$ref": "#/definitions/model.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/recipes/{:id}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Get particular recipe",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The ID associate with the recipe",
+                        "name": "recipe_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "enum": [
+                            "\"vi\"",
+                            "\"en\""
+                        ],
+                        "type": "string",
+                        "example": "\"vi\"",
+                        "description": "supported locale",
+                        "name": "locale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All of the recipe returned",
+                        "schema": {
+                            "$ref": "#/definitions/model.RecipeGetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Recipe id not found",
+                        "schema": {
+                            "$ref": "#/definitions/model.RecipeNotFoundError"
+                        }
+                    },
+                    "500": {
+                        "description": "Problem with internal server",
+                        "schema": {
+                            "$ref": "#/definitions/model.InternalServerError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Recipes"
+                ],
+                "summary": "Delete particular recipe",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The ID associate with the recipe",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "enum": [
+                            "\"vi\"",
+                            "\"en\""
+                        ],
+                        "type": "string",
+                        "description": "supported locale",
+                        "name": "locale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Id of the deleted recipe",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Recipe id not found",
+                        "schema": {
+                            "$ref": "#/definitions/model.RecipeNotFoundError"
+                        }
+                    },
+                    "500": {
+                        "description": "Problem with internal server",
+                        "schema": {
+                            "$ref": "#/definitions/model.InternalServerError"
+                        }
+                    }
+                }
+            }
+        },
+        "/signin": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login to make private request",
+                "parameters": [
+                    {
+                        "description": "User login request",
+                        "name": "recipe",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UserRequest"
+                        }
+                    },
+                    {
+                        "enum": [
+                            "\"vi\"",
+                            "\"en\""
+                        ],
+                        "type": "string",
+                        "description": "supported locale",
+                        "name": "locale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Access token and expiry",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Either user not found or invalid password and username",
+                        "schema": {
+                            "$ref": "#/definitions/model.UserInvalid"
+                        }
+                    }
+                }
+            }
+        },
+        "/signout": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Sigout and clear cookie token",
+                "parameters": [
+                    {
+                        "description": "User login request",
+                        "name": "recipe",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UserRequest"
+                        }
+                    },
+                    {
+                        "enum": [
+                            "\"vi\"",
+                            "\"en\""
+                        ],
+                        "type": "string",
+                        "description": "supported locale",
+                        "name": "locale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Signout of user",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/signup": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Signup a new user",
+                "parameters": [
+                    {
+                        "description": "User login request",
+                        "name": "recipe",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UserRequest"
+                        }
+                    },
+                    {
+                        "enum": [
+                            "\"vi\"",
+                            "\"en\""
+                        ],
+                        "type": "string",
+                        "description": "supported locale",
+                        "name": "locale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Access token and expiry",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "User Exist or bad request",
+                        "schema": {
+                            "$ref": "#/definitions/model.UserInvalid"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.InternalServerError": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string",
+                    "default": "internal server error"
+                }
+            }
+        },
+        "model.RecipeCreateRequest": {
+            "type": "object",
+            "required": [
+                "ingredients",
+                "instructions",
+                "name"
+            ],
+            "properties": {
+                "ingredients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "Beef",
+                        "Noodle"
+                    ]
+                },
+                "instructions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "Slow cook beef for 2 hours ",
+                        " prepare noodle"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Vietnamese Pho"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "x-nullable": true,
+                    "example": [
+                        "vietnamese",
+                        "asian"
+                    ]
+                }
+            }
+        },
+        "model.RecipeGetResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "ingredients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "instructions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "publishedAt": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "model.RecipeNotFoundError": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string",
+                    "example": "not found"
+                }
+            }
+        },
+        "model.RecipeParsingError": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string",
+                    "example": "Payload parsing error reason"
+                }
+            }
+        },
+        "model.UserInvalid": {
+            "type": "object"
+        },
+        "model.UserRequest": {
+            "type": "object"
+        }
+    }
+}

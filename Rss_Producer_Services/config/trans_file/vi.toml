@@ -1,0 +1,27 @@
+[required]
+  other = "{{.Field}} là trường bắt buộc."
+
+[url]
+  other = "{{.Field}} has to be a valid url"
+
+[notfound]
+  other = "không tìm thấy tài nguyên {{.Param}}"
+
+[bodyparse]
+  other = "vui lòng kiểm tra lại format"
+
+[tryagain]
+  other = "vui lòng kiểm tra lại sau"
+
+[notsupport]
+  other = "{{.Method}} cho không hợp lệ"
+
+[insertcount]
+  one = "Bạn đã thành công tải 1 tường rss  vào cơ sở dữ liệu "
+  other = "Bạn đã thành công tải {{.Count}} tường rss feed vào cơ sở dữ liệu"
+
+
+[fetchreceive]
+description = "notified rss request receive"
+other =  "Rss fetching request for {{.URL}} have been received"
+

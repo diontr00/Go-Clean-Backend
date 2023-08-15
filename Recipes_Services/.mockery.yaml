@@ -1,0 +1,2 @@
+mockname: "{{.InterfaceName}}{{.Mock}}"
+with-expecter: True

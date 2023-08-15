@@ -1,0 +1,33 @@
+[required]
+  other = "{{.Field}} is a required field"
+
+[url]
+  other = "{{.Field}} has to be a valid url"
+
+[notfound]
+  other = "Result not found"
+
+[bodyparse]
+  other = "Unknown message format"
+
+[tryagain]
+  other = "Please try again later"
+
+[notlogin]
+  other = "You must log in first before continute"
+
+[notsupport]
+  other = "{{.Method}} for is invalid , please read documentation"
+
+[insertcount]
+  one = "You have insert 1 rss feed into the database"
+  other = "You have insert {{.Count}} rss feeds into the database"
+
+[test_specs]
+  one = "This is 1"
+  other = "This is {{.Count}}"
+
+
+[fetchreceive]
+description = "notified rss request receive"
+other =  "yêu cầu tải rss cho {{.URL}} đã được cập nhập"

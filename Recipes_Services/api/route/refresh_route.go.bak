@@ -1,0 +1,16 @@
+package route
+
+import "khanhanhtr/sample/api/controller"
+
+func refreshSetup(config *RouteConfig) {
+	controller := &controller.RefreshController{
+
+		Logger:     config.Logger,
+		Validator:  config.Validator,
+		Cache:      config.Cache,
+		Translator: config.Translator,
+		EncryptKey: config.EncryptKey,
+	}
+
+	config.Group.Post("/refresh", controller.RefreshToken)
+}

@@ -1,0 +1,8 @@
+go 
+ruby
+docker
+vault 
+mongosh
+go-swagger
+pgcli
+snyk

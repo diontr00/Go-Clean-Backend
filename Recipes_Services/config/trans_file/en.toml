@@ -1,0 +1,54 @@
+[required]
+  other = "{{.Field}} is a required field"
+
+[alphanum]
+  other = "{{.Field}} need to contains (A-Z,a-z,0-9) and special character"
+
+[containsany]
+  other = "{{.Field}} need to have special character"
+
+[alpha]
+  other = "{{.Field}} only accept alpha character"
+
+[email]
+  other = "{{.Field}} need to be a valid email"
+
+[min]
+  other = "{{.Field}} need to have at least {{.Param}} characters"
+
+[notfound]
+  other = "Result not found"
+
+[invalidkey]
+  other = "API key not provide or invalid"
+
+[bodyparse]
+  other = "Unknown message format"
+
+[tryagain]
+  other = "Please try again later"
+
+[autherror]
+  other = "username or password is invalid"
+
+[missingtoken]
+  other = "Please Sign in first"
+
+[userexist]
+  other = "User already exist, please signin"
+
+[signuperror]
+  other = "Can't create user at the moment"
+
+[alreadylogin]
+  other = "You're already log in"
+
+[notlogin]
+  other = "You must log in first before continute"
+
+[notsupport]
+  other = "{{.Method}} for is invalid, please read documentation"
+
+[loggedin]
+  other = "Sign in success"
+

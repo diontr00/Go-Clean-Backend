@@ -1,0 +1,18 @@
+[test_specs]
+one = "This is {{.Count}} apple"
+other = "This is {{.Count}} apples"
+
+
+[email] 
+other = "Invalid Email Address"
+
+
+[required] 
+description = "for simplicity hard coded field"
+other = "Please input name"
+
+
+
+
+
+
